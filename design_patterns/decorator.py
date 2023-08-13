@@ -10,24 +10,24 @@ def extension(*exts):
     return register
 
 
-@extension('json')
+@extension("json")
 def json_parser(file):
-    print('json_parser')
+    print(f"Parse {file} with json_parser")
 
 
-@extension('xml')
+@extension("xml")
 def xml_parser(file):
-    print('xml_parser')
+    print(f"Parse {file} with xml_parser")
 
 
 def parse_file(file):
-    ext = file.split('.')[-1]
+    ext = file.split(".")[-1]
     parser = parsers.get(ext)
     if not parser:
-        raise Exception(f'No parser for the extension {ext}')
+        raise Exception(f"No parser for the extension {ext}")
     return parser(file)
 
 
-if __name__ == '__main__':
-    parse_file('test.json')
-    parse_file('test.xml')
+if __name__ == "__main__":
+    parse_file("test.json")
+    parse_file("test.xml")
